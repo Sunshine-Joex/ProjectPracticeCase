@@ -19,10 +19,10 @@ abstract class BaseActivity<P : BaseContract.BasePresenter> : AppCompatActivity(
         if (mPresenter != null) {
             mPresenter!!.attachView(this)
         }
-        getLayout()
+        setContentView(getLayout())
     }
 
-    abstract fun getLayout()
+    abstract fun getLayout(): Int
 
     open fun createPresenter(): P? {
         return null
