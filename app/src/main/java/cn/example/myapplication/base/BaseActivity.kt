@@ -11,7 +11,7 @@ import android.os.Bundle
 
 abstract class BaseActivity<P : BaseContract.BasePresenter> : AppCompatActivity(), BaseContract.BaseView {
 
-    private var mPresenter: P? = null
+     var mPresenter: P? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
