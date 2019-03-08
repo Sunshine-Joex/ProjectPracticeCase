@@ -1,8 +1,10 @@
 package cn.example.myapplication.net
 
+import android.util.Log
 import cn.example.myapplication.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,11 +20,13 @@ object RetrofitClient {
     var mOkHttpClient: OkHttpClient? = null
     var mApiService: ApiService? = null
     const val CONNECTTIMEOUT = 10L
+    const val LOG_TAG = "http_log"
 
     init {
         mOkHttpClient = OkHttpClient.Builder()
                 .connectTimeout(CONNECTTIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(CONNECTTIMEOUT, TimeUnit.SECONDS)
+                .addInterceptor(addLoggingInterceptor())
                 .addInterceptor(addheader())//log、统一header配置
                 .build()
 
@@ -38,6 +42,15 @@ object RetrofitClient {
         return if (mApiService == null)
             mRetrofit!!.create(ApiService::class.java)
         else mApiService!!
+    }
+
+    fun addLoggingInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+            override fun log(message: String?) {
+                Log.i(LOG_TAG, message)
+            }
+
+        }).setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
 //    fun <T> createService(service: Class<T>): T {
