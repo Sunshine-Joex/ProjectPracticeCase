@@ -33,9 +33,26 @@ abstract class BaseFragment<P : BaseContract.BasePresenter> : Fragment(), BaseCo
             mPresenter!!.attachView(this)
         }
         return mRootView
+
     }
 
-    abstract fun createPresenter(): P?
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+        initData()
+    }
+
+    open fun initData() {
+
+    }
+
+    open fun initView() {
+
+    }
+
+    open fun createPresenter(): P? {
+        return null
+    }
 
     abstract fun getLayout(): Int
 

@@ -11,7 +11,7 @@ import android.os.Bundle
 
 abstract class BaseActivity<P : BaseContract.BasePresenter> : AppCompatActivity(), BaseContract.BaseView {
 
-     var mPresenter: P? = null
+    var mPresenter: P? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +20,16 @@ abstract class BaseActivity<P : BaseContract.BasePresenter> : AppCompatActivity(
             mPresenter!!.attachView(this)
         }
         setContentView(getLayout())
+        initView()
+        initData()
+    }
+
+    open fun initData() {
+
+    }
+
+    open fun initView() {
+
     }
 
     abstract fun getLayout(): Int
