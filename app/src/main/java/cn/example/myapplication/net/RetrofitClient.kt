@@ -27,7 +27,7 @@ object RetrofitClient {
                 .connectTimeout(CONNECTTIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(CONNECTTIMEOUT, TimeUnit.SECONDS)
                 .addInterceptor(addLoggingInterceptor())
-                .addInterceptor(addheader())//log、统一header配置
+                .addInterceptor(addHeader())//log、统一header配置
                 .build()
 
         mRetrofit = Retrofit.Builder()
@@ -38,13 +38,13 @@ object RetrofitClient {
                 .build()
     }
 
-    fun createService(): ApiService {
+    private fun createService(): ApiService {
         return if (mApiService == null)
             mRetrofit!!.create(ApiService::class.java)
         else mApiService!!
     }
 
-    fun addLoggingInterceptor(): HttpLoggingInterceptor {
+    private fun addLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
             override fun log(message: String?) {
                 Log.i(LOG_TAG, message)
@@ -61,7 +61,7 @@ object RetrofitClient {
 //    }
 
     //添加头信息
-    fun addheader(): Interceptor {
+    private fun addHeader(): Interceptor {
         val interceptor = Interceptor { chain ->
             val request = chain?.request()?.newBuilder()?.addHeader("key", "value")?.build()
             chain?.proceed(request)
