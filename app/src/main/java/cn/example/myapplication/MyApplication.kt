@@ -2,6 +2,7 @@ package cn.example.myapplication
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 
 /**
@@ -11,12 +12,26 @@ import android.os.Bundle
  */
 class MyApplication : Application() {
 
-    private var mCurrentActivity: Activity? = null
+    companion object {
+        private var instance: Application? = null
+        private var mCurrentActivity: Activity? = null
+        private var mContext: Context? = null
+
+        fun instance() = instance!!
+        fun getCurrentActivity() = mCurrentActivity!!
+        fun getContext() = mContext!!
+    }
+
+
 //var mFrontActivityList: MutableList<Activity>? = null
 
     override fun onCreate() {
         super.onCreate()
+        instance = this
+        mContext = applicationContext
         initActivityManager()
+
+
     }
 
     private fun initActivityManager() {
@@ -26,7 +41,7 @@ class MyApplication : Application() {
             }
 
             override fun onActivityResumed(activity: Activity?) {
-
+                mCurrentActivity = activity
             }
 
             override fun onActivityStarted(activity: Activity?) {
@@ -43,17 +58,10 @@ class MyApplication : Application() {
             }
 
             override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
-                mCurrentActivity = activity
-//                mFrontActivityList!!.add(activity!!)
             }
 
         })
     }
 
-    companion object {
 
-        fun getCurrentActivity(): Activity {
-            return MyApplication().mCurrentActivity!!
-        }
-    }
 }

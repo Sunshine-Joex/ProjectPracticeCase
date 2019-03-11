@@ -9,6 +9,7 @@ import cn.example.myapplication.base.BaseActivity
 import cn.example.myapplication.bean.HolidayBean
 import cn.example.myapplication.ui.contract.TestContract
 import cn.example.myapplication.ui.presenter.TestPresenter
+import cn.example.myapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_test.*
 
 /**
@@ -52,6 +53,7 @@ class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnCl
         when (v!!.id) {
             R.id.button2 -> {
                 startActivity(intent)
+                toast(getString(R.string.app_name))
 //                finish()
             }
         /* startActivity<MainActivity>("name" to "sunshine",

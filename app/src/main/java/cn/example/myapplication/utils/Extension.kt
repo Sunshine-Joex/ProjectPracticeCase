@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.widget.Toast
+import cn.example.myapplication.utils.cointoast.ToastUtils
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -29,6 +30,14 @@ fun Activity.toast(msg: String, time: Int = Toast.LENGTH_SHORT) {
 
 fun Fragment.toast(msg: String, time: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(activity, msg, time).show()
+}
+
+fun Fragment.toast(msgId: String) {
+    ToastUtils.showShort(msgId)
+}
+
+fun Context.toast(msgId: String) {
+    ToastUtils.showShort(msgId)
 }
 
 inline fun <reified T : Activity> Context.startActivity(vararg params: Pair<String, Any>) {

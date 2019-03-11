@@ -38,7 +38,7 @@ object RetrofitClient {
                 .build()
     }
 
-    private fun createService(): ApiService {
+     fun createService(): ApiService {
         return if (mApiService == null)
             mRetrofit!!.create(ApiService::class.java)
         else mApiService!!
