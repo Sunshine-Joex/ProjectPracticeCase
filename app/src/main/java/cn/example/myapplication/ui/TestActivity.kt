@@ -9,6 +9,7 @@ import cn.example.myapplication.base.BaseActivity
 import cn.example.myapplication.bean.HolidayBean
 import cn.example.myapplication.ui.contract.TestContract
 import cn.example.myapplication.ui.presenter.TestPresenter
+import cn.example.myapplication.utils.startActivity
 import cn.example.myapplication.utils.toast
 import kotlinx.android.synthetic.main.activity_test.*
 
@@ -37,28 +38,24 @@ class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnCl
 
     }
 
-    /**    * 数据回调
+    /** 数据回调
      *
      */
     override fun loadData(holiday: HolidayBean) {
         model = holiday
         Handler().postDelayed(
                 { button2.text = holiday.toString() },
-                4000)
+                1000)
     }
 
     override fun onClick(v: View?) {
-        var intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("model", model)
         when (v!!.id) {
             R.id.button2 -> {
-                startActivity(intent)
                 toast(getString(R.string.app_name))
-//                finish()
+                startActivity<MainActivity>("name" to "sunshine",
+                        "age" to 21)
             }
-        /* startActivity<MainActivity>("name" to "sunshine",
-                    "age" to 21,
-                    "model" to model)*/
+
         }
     }
 }

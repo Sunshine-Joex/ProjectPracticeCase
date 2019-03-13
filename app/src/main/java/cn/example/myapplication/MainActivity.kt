@@ -13,14 +13,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<BaseContract.BasePresenter>() {
 
-    var mHolidayBean: HolidayBean? = null
+    var mHolidayBean: String? = null
 
     override fun getLayout() = R.layout.activity_main
 
 
     override fun onResume() {
         super.onResume()
-        mHolidayBean = intent.getParcelableExtra("model")
-        textView.text = mHolidayBean!!.weekDay.toString()
+        mHolidayBean = intent.getStringExtra("name")
+        textView.text = mHolidayBean
     }
 }

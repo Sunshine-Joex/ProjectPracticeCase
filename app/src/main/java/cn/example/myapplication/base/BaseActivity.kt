@@ -2,6 +2,10 @@ package cn.example.myapplication.base
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import cn.example.myapplication.R
+import cn.example.myapplication.widget.MultiStateView
+import cn.example.myapplication.widget.SimpleMultiStateView
+import kotlinx.android.synthetic.main.activity_test.*
 
 /**
  * @author SunShine-Joex
@@ -20,8 +24,29 @@ abstract class BaseActivity<P : BaseContract.BasePresenter> : AppCompatActivity(
             mPresenter!!.attachView(this)
         }
         setContentView(getLayout())
+        initStateView()
         initView()
         initData()
+    }
+
+    private fun initStateView() {
+        if (simpleMultiStateView == null) {
+            return
+        }
+        simpleMultiStateView!!.setEmptyResource(R.layout.view_empty)
+                .setRetryResource(R.layout.view_retry)
+                .setLoadingResource(R.layout.view_loading)
+                .setNoNetResource(R.layout.view_nonet)
+                .build()
+                .setonReLoadlistener(object : MultiStateView.onReLoadlistener {
+                    override fun onReload() {
+                        onRetry()
+                    }
+                })
+    }
+
+    protected fun getStateView(): SimpleMultiStateView? {
+        return simpleMultiStateView
     }
 
     open fun initData() {
@@ -46,17 +71,31 @@ abstract class BaseActivity<P : BaseContract.BasePresenter> : AppCompatActivity(
     }
 
     override fun showLoading() {
+        if (simpleMultiStateView != null) {
+            simpleMultiStateView!!.showLoadingView()
+        }
     }
 
     override fun showSuccess() {
+        if (simpleMultiStateView != null) {
+            simpleMultiStateView!!.showContent()
+        }
     }
 
     override fun showError() {
+        if (simpleMultiStateView != null) {
+            simpleMultiStateView!!.showErrorView()
+        }
     }
 
     override fun showNoNet() {
+        if (simpleMultiStateView != null) {
+            simpleMultiStateView!!.showNoNetView()
+        }
     }
 
     override fun onRetry() {
+        showLoading()
+        initData()
     }
 }

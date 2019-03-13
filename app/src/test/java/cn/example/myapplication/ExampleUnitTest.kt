@@ -12,6 +12,10 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
+//        val cakes= listOf<String>("12","21")
+//        for (item in cakes){
+//            print(item)
+//        }
         assertEquals(4, 2 + 2)
     }
 }

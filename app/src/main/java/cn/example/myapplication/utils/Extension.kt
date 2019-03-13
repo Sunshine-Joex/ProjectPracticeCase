@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.widget.Toast
-import cn.example.myapplication.utils.cointoast.ToastUtils
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -18,28 +17,26 @@ import java.io.Serializable
  * @date   2019/3/8
  * @desc
  */
+
 fun <T> Observable<T>.applySchedulers(): Observable<T> {
     return subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
 }
 
-fun Activity.toast(msg: String, time: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(this, msg, time).show()
-
-}
 
 fun Fragment.toast(msg: String, time: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(activity, msg, time).show()
 }
 
-fun Fragment.toast(msgId: String) {
-    ToastUtils.showShort(msgId)
+
+fun Context.toast(msg: String, time: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(this, msg, time).show()
+
 }
 
-fun Context.toast(msgId: String) {
-    ToastUtils.showShort(msgId)
-}
-
+/**
+ * inline 函数跳转，传参数，不支持Parcelable
+ */
 inline fun <reified T : Activity> Context.startActivity(vararg params: Pair<String, Any>) {
     val intent = Intent(this, T::class.java)
     params.forEach {
@@ -63,7 +60,7 @@ inline fun <reified T : Activity> Context.startActivity(vararg params: Pair<Stri
                 value.isArrayOf<CharSequence>() -> intent.putExtra(key, value)
                 value.isArrayOf<String>() -> intent.putExtra(key, value)
                 value.isArrayOf<Parcelable>() -> intent.putExtra(key, value)
-//                else -> throw AnkoException("Intent extra ${key} has wrong type ${value.javaClass.name}")
+                else -> throw Exception("Intent extra ${key} has wrong type ${value.javaClass.name}")
             }
             is IntArray -> intent.putExtra(key, value)
             is LongArray -> intent.putExtra(key, value)
@@ -72,7 +69,7 @@ inline fun <reified T : Activity> Context.startActivity(vararg params: Pair<Stri
             is CharArray -> intent.putExtra(key, value)
             is ShortArray -> intent.putExtra(key, value)
             is BooleanArray -> intent.putExtra(key, value)
-//            else -> throw AnkoException("Intent extra ${key} has wrong type ${value.javaClass.name}")
+            else -> throw Exception("Intent extra ${key} has wrong type ${value.javaClass.name}")
         }
         return@forEach
     }

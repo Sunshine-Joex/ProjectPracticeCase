@@ -1,6 +1,7 @@
 package cn.example.myapplication.ui.presenter
 
 import cn.example.myapplication.base.AbstractPresenter
+import cn.example.myapplication.base.BaseContract
 import cn.example.myapplication.bean.HolidayBean
 import cn.example.myapplication.net.BaseObserver
 import cn.example.myapplication.ui.contract.TestContract
@@ -16,7 +17,7 @@ class TestPresenter : AbstractPresenter<TestContract.View>(), TestContract.Prese
     override fun getData() {
         mApiService!!.getHoliday("20190308")
                 .applySchedulers()
-                .subscribe(object : BaseObserver<HolidayBean>() {
+                .subscribe(object : BaseObserver<HolidayBean, BaseContract.BaseView>(mView!!) {
                     override fun onSuccess(t: HolidayBean?) {
                         mView!!.loadData(t!!)
                     }
