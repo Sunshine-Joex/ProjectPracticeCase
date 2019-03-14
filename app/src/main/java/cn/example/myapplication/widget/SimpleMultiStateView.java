@@ -123,8 +123,16 @@ public class SimpleMultiStateView extends MultiStateView {
      * 无数据时
      */
     public void showNoNetView() {
+        if (getViewState() != MultiStateView.STATE_CONTENT) {
+            this.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    setViewState(MultiStateView.STATE_NONET);
+                }
+            }, 100);
 
-        setViewState(MultiStateView.STATE_NONET);
+        }
+
     }
 
     /**
@@ -203,7 +211,7 @@ public class SimpleMultiStateView extends MultiStateView {
     }
 
     public SimpleMultiStateView build() {
-        //showLoadingView();
+        showLoadingView();
         return this;
     }
 

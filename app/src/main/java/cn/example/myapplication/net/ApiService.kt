@@ -13,7 +13,7 @@ import retrofit2.http.Path
  */
 interface ApiService {
 
-    @GET("holiday/single/{date}")
+    @GET("holiday/single1/{date}")
     fun getHoliday(@Path("date") date: String): Observable<HttpResponseBean<HolidayBean>>
 
 }

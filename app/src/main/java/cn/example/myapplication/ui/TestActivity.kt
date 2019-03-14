@@ -45,7 +45,7 @@ class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnCl
         model = holiday
         Handler().postDelayed(
                 { button2.text = holiday.toString() },
-                1000)
+                0)
     }
 
     override fun onClick(v: View?) {

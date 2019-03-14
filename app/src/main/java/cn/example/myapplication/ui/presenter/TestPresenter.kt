@@ -15,16 +15,18 @@ import cn.example.myapplication.utils.applySchedulers
 class TestPresenter : AbstractPresenter<TestContract.View>(), TestContract.Presenter {
 
     override fun getData() {
+        mView!!.showLoading()
         mApiService!!.getHoliday("20190308")
                 .applySchedulers()
                 .subscribe(object : BaseObserver<HolidayBean, BaseContract.BaseView>(mView!!) {
                     override fun onSuccess(t: HolidayBean?) {
+                        super.onSuccess(t)
                         mView!!.loadData(t!!)
                     }
+//                    override fun onSuccess(t: HolidayBean?) {
+//                        mView!!.loadData(t!!)
+//                    }
 
-                    override fun onFailure(e: Throwable) {
-                        mView!!.showError()
-                    }
 
                 })
 

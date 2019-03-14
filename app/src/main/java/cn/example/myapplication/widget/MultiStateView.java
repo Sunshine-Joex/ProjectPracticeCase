@@ -27,7 +27,7 @@ public class MultiStateView extends FrameLayout {
     private View mContentView;
     private int mCurrentState = STATE_CONTENT;
     private OnInflateListener mOnInflateListener;
-    private onReLoadlistener mOnReLoadlistener;
+    private onReLoadListener mOnReLoadListener;
 
     public MultiStateView(Context context) {
         this(context, null);
@@ -78,9 +78,7 @@ public class MultiStateView extends FrameLayout {
      * @param state 状态类型
      */
     public void setViewState(int state) {
-        if (getCurrentView() == null) {
-            return;
-        }
+        if (getCurrentView() == null) return;
         if (state != mCurrentState) {
             View view = getView(state);
 
@@ -91,20 +89,19 @@ public class MultiStateView extends FrameLayout {
 
             } else {
                 int resLayoutID = mLayoutIDArray.get(state);
-                if (resLayoutID == 0) {
-                    return;
-                }
+                if (resLayoutID == 0) return;
                 view = LayoutInflater.from(getContext()).inflate(resLayoutID, this, false);
                 mStateViewArray.put(state, view);
                 addView(view);
-                if (state == STATE_NONET || state == STATE_FAIL) {
-                    View retryView = view.findViewById(R.id.refresh);
-                    if (retryView != null) {
-                        retryView.setOnClickListener(new OnClickListener() {
+                if (state == STATE_NONET||state == STATE_FAIL) {
+                    View bt = view.findViewById(R.id.refresh);
+                    if (bt != null) {
+                        bt.setOnClickListener(new OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                if (mOnReLoadlistener != null) {
-                                    mOnReLoadlistener.onReload();
+                                if (mOnReLoadListener != null) {
+                                    mOnReLoadListener.onReload();
+                                    setViewState(STATE_LOADING);
                                 }
                             }
                         });
@@ -145,9 +142,7 @@ public class MultiStateView extends FrameLayout {
      * @return 当前状态的View
      */
     public View getCurrentView() {
-        if (mCurrentState == -1) {
-            return null;
-        }
+        if (mCurrentState == -1) return null;
         View view = getView(mCurrentState);
         if (view == null && mCurrentState == STATE_CONTENT) {
             throw new NullPointerException("content is null");
@@ -161,8 +156,8 @@ public class MultiStateView extends FrameLayout {
         mLayoutIDArray.put(status, resLayoutID);
     }
 
-    public void setonReLoadlistener(onReLoadlistener onReLoadlistener) {
-        mOnReLoadlistener = onReLoadlistener;
+    public void setOnReLoadListener(onReLoadListener onReLoadListener) {
+        mOnReLoadListener = onReLoadListener;
     }
 
     public void setOnInflateListener(OnInflateListener onInflateListener) {
@@ -172,9 +167,7 @@ public class MultiStateView extends FrameLayout {
     private boolean isValidContentView(View view) {
         if (mContentView == null) {
             for (int i = 0; i < mStateViewArray.size(); i++) {
-                if (mStateViewArray.indexOfValue(view) != -1) {
-                    return false;
-                }
+                if (mStateViewArray.indexOfValue(view) != -1) return false;
             }
             return true;
         }
@@ -200,7 +193,7 @@ public class MultiStateView extends FrameLayout {
     /**
      * 重新加载接口
      */
-    public interface onReLoadlistener {
+    public interface onReLoadListener {
         void onReload();
     }
 }

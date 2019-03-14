@@ -23,19 +23,11 @@ abstract class BaseObserver<T, V : BaseContract.BaseView> : Observer<HttpRespons
 
     override fun onError(e: Throwable) {
         onFailure(e)
-        if (e is RuntimeException) {
 
-        } else if (e is UnknownHostException ||
-                e is SocketTimeoutException ||
-                e is ConnectException) {
-            v!!.showNoNet()
-        } else {
-            v!!.showError()
-        }
     }
 
     override fun onNext(t: HttpResponseBean<T>) {
-            onSuccess(t.data)
+        onSuccess(t.data)
     }
 
     override fun onComplete() {
@@ -44,8 +36,17 @@ abstract class BaseObserver<T, V : BaseContract.BaseView> : Observer<HttpRespons
     override fun onSubscribe(d: Disposable) {
     }
 
-    abstract fun onSuccess(t: T?)
+    open fun onSuccess(t: T?) {
+        v!!.showSuccess()
+    }
 
-    abstract fun onFailure(e: Throwable)
+    open fun onFailure(e: Throwable) {
+        if (e is UnknownHostException) {
+            v!!.showNoNet()
+        } else if (e is SocketTimeoutException ||
+                e is ConnectException) {
+            v!!.showError()
+        }
+    }
 
 }

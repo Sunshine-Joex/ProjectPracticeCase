@@ -38,10 +38,11 @@ abstract class BaseActivity<P : BaseContract.BasePresenter> : AppCompatActivity(
                 .setLoadingResource(R.layout.view_loading)
                 .setNoNetResource(R.layout.view_nonet)
                 .build()
-                .setonReLoadlistener(object : MultiStateView.onReLoadlistener {
+                .setOnReLoadListener(object : MultiStateView.onReLoadListener {
                     override fun onReload() {
                         onRetry()
                     }
+
                 })
     }
 
