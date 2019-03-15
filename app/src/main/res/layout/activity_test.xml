@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,15 +8,42 @@
 
     <cn.example.myapplication.widget.SimpleMultiStateView
         android:id="@+id/simpleMultiStateView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/mData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Button" />
     </cn.example.myapplication.widget.SimpleMultiStateView>
+
+    <Button
+        android:id="@+id/mLoginOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="退出登录" />
+
+    <ImageView
+        android:id="@+id/testImg"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center" />
+    <ImageView
+        android:id="@+id/testBorderImg"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center" />
+    <ImageView
+        android:id="@+id/testRoundImg"
+        android:layout_width="108dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
+        android:layout_gravity="center" />
+
 
 </LinearLayout>

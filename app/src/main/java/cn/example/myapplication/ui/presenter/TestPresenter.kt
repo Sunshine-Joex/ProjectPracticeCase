@@ -5,7 +5,7 @@ import cn.example.myapplication.base.BaseContract
 import cn.example.myapplication.bean.HolidayBean
 import cn.example.myapplication.net.BaseObserver
 import cn.example.myapplication.ui.contract.TestContract
-import cn.example.myapplication.utils.applySchedulers
+import cn.example.myapplication.extension.applySchedulers
 
 /**
  * @author SunShine-Joex

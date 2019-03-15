@@ -3,6 +3,7 @@ package cn.example.myapplication.base
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import cn.example.myapplication.R
+import cn.example.myapplication.utils.StatusBarLightMode
 import cn.example.myapplication.widget.MultiStateView
 import cn.example.myapplication.widget.SimpleMultiStateView
 import kotlinx.android.synthetic.main.activity_test.*
@@ -23,11 +24,16 @@ abstract class BaseActivity<P : BaseContract.BasePresenter> : AppCompatActivity(
         if (mPresenter != null) {
             mPresenter!!.attachView(this)
         }
+        if (setStatusBarBlack()) {
+            StatusBarLightMode(window)
+        }
         setContentView(getLayout())
         initStateView()
         initView()
         initData()
     }
+
+    open fun setStatusBarBlack() = false
 
     private fun initStateView() {
         if (simpleMultiStateView == null) {

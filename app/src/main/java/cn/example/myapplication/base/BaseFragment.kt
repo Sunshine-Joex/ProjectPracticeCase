@@ -19,8 +19,27 @@ abstract class BaseFragment<P : BaseContract.BasePresenter> : Fragment(), BaseCo
     private var mContext: Context? = null
     private var mPresenter: P? = null
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        if (mRootView == null) {
+            mRootView = inflater.inflate(getLayout(), container, false)
+        } else {
+            val parent = mRootView!!.parent as ViewGroup
+            parent.removeView(mRootView)
+        }
+        mContext = mRootView!!.context
+        mPresenter = createPresenter()
+        if (mPresenter != null) {
+            mPresenter!!.attachView(this)
+        }
+        return mRootView
+    }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+        initData()
+    }
+  /*  override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (mRootView == null) {
             mRootView = inflater!!.inflate(getLayout(), container, false)
         } else {
@@ -41,7 +60,7 @@ abstract class BaseFragment<P : BaseContract.BasePresenter> : Fragment(), BaseCo
         initView()
         initData()
     }
-
+*/
     open fun initData() {
 
     }

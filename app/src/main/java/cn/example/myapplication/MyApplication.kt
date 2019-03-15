@@ -15,15 +15,15 @@ class MyApplication : Application() {
     companion object {
         private var instance: Application? = null
         private var mCurrentActivity: Activity? = null
+        private var mFrontActivityList: MutableList<Activity>? = null
         private var mContext: Context? = null
 
         fun instance() = instance!!
         fun getCurrentActivity() = mCurrentActivity!!
         fun getContext() = mContext!!
+        fun getActivitys() = mFrontActivityList!!
     }
 
-
-//var mFrontActivityList: MutableList<Activity>? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -31,11 +31,10 @@ class MyApplication : Application() {
         mContext = applicationContext
         initActivityManager()
 
-
     }
 
     private fun initActivityManager() {
-//        mFrontActivityList = mutableListOf()
+        mFrontActivityList = mutableListOf()
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity?) {
             }
@@ -48,7 +47,6 @@ class MyApplication : Application() {
             }
 
             override fun onActivityDestroyed(activity: Activity?) {
-//                mFrontActivityList!!.add(activity!!)
             }
 
             override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?) {
@@ -58,6 +56,10 @@ class MyApplication : Application() {
             }
 
             override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
+                if (activity !is MainActivity) {
+                    mFrontActivityList!!.add(activity!!)
+                }
+
             }
 
         })

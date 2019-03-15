@@ -63,8 +63,8 @@ object RetrofitClient {
     //添加头信息
     private fun addHeader(): Interceptor {
         val interceptor = Interceptor { chain ->
-            val request = chain?.request()?.newBuilder()?.addHeader("key", "value")?.build()
-            chain?.proceed(request)
+            val request = chain!!.request()!!.newBuilder()!!.addHeader("key", "value")!!.build()
+            chain!!.proceed(request)
         }
         return interceptor
     }
