@@ -1,8 +1,11 @@
 package cn.example.myapplication.ui
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Handler
+import android.support.annotation.RequiresApi
 import android.view.View
+import android.widget.TextView
 import cn.example.myapplication.MainActivity
 import cn.example.myapplication.MyApplication
 import cn.example.myapplication.R
@@ -12,6 +15,9 @@ import cn.example.myapplication.extension.*
 import cn.example.myapplication.ui.contract.TestContract
 import cn.example.myapplication.ui.presenter.TestPresenter
 import cn.example.myapplication.utils.SharedPreferences
+import cn.example.myapplication.widget.popupwindow.EasyPopup
+import cn.example.myapplication.widget.popupwindow.XGravity
+import cn.example.myapplication.widget.popupwindow.YGravity
 import kotlinx.android.synthetic.main.activity_test.*
 
 /**
@@ -26,6 +32,8 @@ const val url: String = "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/" +
 
 class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnClickListener {
 
+    var mPop: EasyPopup? = null
+
     var isLogin: Boolean by SharedPreferences.preference(this, "islogin", false)
     var model: HolidayBean? = null
 
@@ -36,6 +44,7 @@ class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnCl
     override fun initView() {
         mData.setOnClickListener(this)
         mLoginOut.setOnClickListener(this)
+        testRoundImg.setOnClickListener(this)
         supportActionBar!!.title = isLogin.toString()
 
 
@@ -59,6 +68,7 @@ class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnCl
                 0)
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.mData -> {
@@ -71,8 +81,32 @@ class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnCl
                     activity.finish()
                 }
             }
+            R.id.testRoundImg -> {
+                initPop()
+            }
+
 
         }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    fun initPop() {
+        var tv = TextView(this)
+        tv.setBackgroundColor(Color.CYAN)
+        tv.text = "EasyPopup"
+        mPop = EasyPopup.create().setContext(this).setContentView(tv)
+                .setOnViewListener(object : EasyPopup.OnViewListener {
+                    override fun initViews(view: View?, popup: EasyPopup?) {
+
+                    }
+
+                })
+                .setFocusAndOutsideEnable(true)
+                .apply()
+
+        mPop!!.showAsDropDown(testRoundImg, 0, 0, YGravity.ABOVE)
+
     }
 
 }
