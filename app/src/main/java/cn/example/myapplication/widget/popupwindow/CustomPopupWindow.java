@@ -7,10 +7,11 @@ import android.view.View;
 import android.widget.PopupWindow;
 
 /**
- * @author qly
+ * @author SunShine-Joex
  * @date 2018/11/16
- * @desc
+ * @desc Android 7.0/7.1 pop弹出的时候bug
  */
+
 public class CustomPopupWindow extends PopupWindow {
     public CustomPopupWindow(Context context) {
         super(context, null);
@@ -18,6 +19,7 @@ public class CustomPopupWindow extends PopupWindow {
 
     /**
      * android 7.0系统bug
+     *
      * @param anchor
      */
     @Override

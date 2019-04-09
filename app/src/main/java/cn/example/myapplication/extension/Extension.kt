@@ -43,7 +43,7 @@ inline fun <reified T : Activity> Context.startActivity(vararg params: Pair<Stri
         val key = it.first
         val value = it.second
         when (value) {
-//             null -> intent.putExtra(key, null as Serializable?)
+             null -> intent.putExtra(key, null as Serializable?)
             is Int -> intent.putExtra(key, value)
             is Long -> intent.putExtra(key, value)
             is CharSequence -> intent.putExtra(key, value)

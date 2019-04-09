@@ -1,5 +1,7 @@
 package cn.example.myapplication.ui
 
+import android.content.ClipboardManager
+import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.os.Handler
@@ -95,17 +97,15 @@ class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnCl
         var tv = TextView(this)
         tv.setBackgroundColor(Color.CYAN)
         tv.text = "EasyPopup"
-        mPop = EasyPopup.create().setContext(this).setContentView(tv)
-                .setOnViewListener(object : EasyPopup.OnViewListener {
-                    override fun initViews(view: View?, popup: EasyPopup?) {
-
-                    }
-
-                })
+        mPop = EasyPopup.create()
+                .setContext(this)
+                .setContentView(tv)
+                .setOnViewListener { view, popup -> }
                 .setFocusAndOutsideEnable(true)
+                .setHeight(dp2px(35f))
+                .setWidth(dp2px(57f))
                 .apply()
-
-        mPop!!.showAsDropDown(testRoundImg, 0, 0, YGravity.ABOVE)
+        mPop!!.showAtAnchorView(testRoundImg, YGravity.ABOVE, XGravity.CENTER, 0, -dp2px(10f))
 
     }
 

@@ -1,15 +1,16 @@
 package cn.example.myapplication
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import cn.example.myapplication.base.BaseActivity
 import cn.example.myapplication.base.BaseContract
-import cn.example.myapplication.utils.imageTopStatusBar
-import com.zhouwei.mzbanner.holder.MZHolderCreator
 import kotlinx.android.synthetic.main.activity_image_top.*
 import android.view.View
 import android.widget.ImageView
 import cn.example.myapplication.extension.loadBorderRoundImage
+import cn.example.myapplication.utils.setNavigationBarColor
+import cn.example.myapplication.utils.transparentStatusBar
 import com.zhouwei.mzbanner.MZBannerView
 import com.zhouwei.mzbanner.holder.MZViewHolder
 
@@ -25,9 +26,8 @@ class ImageTopActivity : BaseActivity<BaseContract.BasePresenter>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.hide()
-        imageTopStatusBar(this)
-//        hideNavigationBar(this,true)
-
+        transparentStatusBar(this)
+        setNavigationBarColor(this, Color.GRAY)
     }
 
     override fun initView() {

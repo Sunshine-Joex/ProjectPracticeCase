@@ -274,8 +274,19 @@ fun hideStatusBar(activity: Activity) {
     }
 }
 
+/**
+ * 设置导航栏颜色(tips:如果设置TRANSPARENT，则底部布局会被遮盖)
+ */
+fun setNavigationBarColor(activity: Activity, navigationColor: Int) {
+    if (Build.VERSION.SDK_INT >= 21) {
+        activity.window.navigationBarColor = navigationColor
+    }
+}
 
-fun imageTopStatusBar(activity: Activity) {
+/**
+ * 浸入透明状态栏
+ */
+fun transparentStatusBar(activity: Activity) {
     if (Build.VERSION.SDK_INT >= 21) {
         val decorView = activity.window.decorView
         decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN

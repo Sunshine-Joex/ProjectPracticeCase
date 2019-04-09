@@ -27,7 +27,7 @@ fun ImageView.loadBorderCircleImage(url: String, borderWidth: Float = 0.0f, bord
 }
 
 /**
- *  加载圆角图(tips:默认radius：8dp)
+ *  加载圆角图(tips:默认radius：0dp)
  */
 fun ImageView.loadBorderRoundImage(url: String, radius: Int = 0) {
     val options = RequestOptions().transform(RoundTransformation(MyApplication.getContext(), radius))
