@@ -14,11 +14,11 @@
 setStatusBarColor(this, Color.CYAN)
 setNavigationBarColor(this,Color.CYAN)
   ```
-    注意：你需要在activity/fragment的根布局添加：
-    ```
+注意：你需要在activity/fragment的根布局添加：
+```
 android:fitsSystemWindows="true"
 android:clipToPadding="true"
-    ```
+```
     否则，布局会上移
 
 效果如下：
@@ -27,7 +27,7 @@ android:clipToPadding="true"
 
 #### json解析工具
 
-  ```
+```
  注意：kotlin的常量在类的顶层
 const val JSON = """{name:"zimo",age:"23"}"""
 const val JSONARRAY = """[{"name":"乔","age":"21"},{"name":"sunshine","age":"25"}]"""
@@ -39,5 +39,4 @@ Log.i("json", "user.name:${user.name}-user.age:${user.age}")
 users.forEach {
     Log.i("json", "user.name:${it.name}-user.age:${it.age}")
 }
-
-    ```
+```
