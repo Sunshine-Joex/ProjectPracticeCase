@@ -15,7 +15,7 @@ setStatusBarColor(this, Color.CYAN)
 setNavigationBarColor(this,Color.CYAN)
   ```
     注意：你需要在activity/fragment的根布局添加：
-    ```
+    
 android:fitsSystemWindows="true"
 android:clipToPadding="true"
     ```
