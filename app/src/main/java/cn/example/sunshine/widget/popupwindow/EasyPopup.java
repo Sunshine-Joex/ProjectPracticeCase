@@ -2,6 +2,11 @@ package cn.example.sunshine.widget.popupwindow;
 
 import android.content.Context;
 import android.view.View;
+/**
+ * @author SunShine-Joex
+ * @date   2019/3/7
+ * @desc   原作者github： https://github.com/zyyoona7/EasyPopup
+ */
 
 public class EasyPopup extends BasePopup<EasyPopup> {
 
