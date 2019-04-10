@@ -10,6 +10,7 @@
 #### 状态栏和导航栏
 
 - 状态栏颜色、状态栏图标暗色、导航栏颜色
+
  ```
 setStatusBarColor(this, Color.CYAN)
 setNavigationBarColor(this,Color.CYAN)
@@ -26,6 +27,12 @@ android:clipToPadding="true"
 
 ![此处为图片加载失败时显示的文字](https://raw.github.com/Sunshine-Joex/ProjectPracticeCase/master/raw/setNavigationStatusBarColor.png)
 
+- 视图侵入状态栏
+```
+transparentStatusBar(this)
+```
+
+![此处为图片加载失败时显示的文字](https://raw.github.com/Sunshine-Joex/ProjectPracticeCase/master/raw/status_image.png)
 #### json解析工具
 
 ```
