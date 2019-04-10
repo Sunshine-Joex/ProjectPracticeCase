@@ -60,11 +60,14 @@ private fun setTranslucentStatus(activity: Activity, on: Boolean) {
 fun setStatusBarColor(activity: Activity, colorId: Int) {
     setTranslucentStatus(activity, true)
     val manager = SystemBarTintManager(activity)
-    manager.setStatusBarTintEnabled(true)
+//    manager.setStatusBarTintEnabled(true)
+    manager.isStatusBarTintEnabled=true
     manager.setNavigationBarTintEnabled(true)
     manager.setTintColor(colorId)
-    val config = manager.getConfig()
-    (activity.findViewById<View>(android.R.id.content) as ViewGroup).getChildAt(0).setPadding(0, config.getPixelInsetTop(false), 0, config.getPixelInsetBottom())
+    val config = manager.config
+    (activity.findViewById<View>(android.R.id.content) as ViewGroup)
+            .getChildAt(0)
+            .setPadding(0, config.getPixelInsetTop(false), 0, config.pixelInsetBottom)
 }
 
 /**
