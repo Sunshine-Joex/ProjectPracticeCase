@@ -9,10 +9,11 @@
 
 #### 状态栏和导航栏
 
-- 状态栏颜色
-
+- 状态栏和导航栏颜色
+ ```
     setStatusBarColor(this, Color.CYAN)
-    
+	setNavigationBarColor(this,Color.CYAN)
+  ```
     注意：你需要在activity/fragment的根布局添加：
     ```
        android:fitsSystemWindows="true"
@@ -22,4 +23,4 @@
 
 效果如下：
 
-![此处为图片加载失败时显示的文字](https://raw.github.com/Sunshine-Joex/ProjectPracticeCase/master/raw/setStatusBarColor.png)
+![此处为图片加载失败时显示的文字](https://raw.github.com/Sunshine-Joex/ProjectPracticeCase/master/raw/setNavigationStatusBarColor.png)
