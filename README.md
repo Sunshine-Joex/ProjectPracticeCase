@@ -12,6 +12,7 @@
 - 状态栏颜色
 
     setStatusBarColor(this, Color.CYAN)
+    
     注意：你需要在activity/fragment的根布局添加：
     ```
        android:fitsSystemWindows="true"
