@@ -29,16 +29,17 @@ android:clipToPadding="true"
 
   ```
  注意：kotlin的常量在类的顶层
-        const val JSON = """{name:"zimo",age:"23"}"""
-        const val JSONARRAY = """[{"name":"乔","age":"21"},{"name":"sunshine","age":"25"}]"""
+ 
+const val JSON = """{name:"zimo",age:"23"}"""
+const val JSONARRAY = """[{"name":"乔","age":"21"},{"name":"sunshine","age":"25"}]"""
         
-        var user: User = toJsonObject(JSON, User::class.java)
-        Log.i("json", "user.name:${user.name}-user.age:${user.age}")
+var user: User = toJsonObject(JSON, User::class.java)
+Log.i("json", "user.name:${user.name}-user.age:${user.age}")
 
-        var users: List<User> = toJsonList(JSONARRAY, User::class.java)
-        users.forEach {
-            Log.i("json", "user.name:${it.name}-user.age:${it.age}")
-        }
+var users: List<User> = toJsonList(JSONARRAY, User::class.java)
+users.forEach {
+     Log.i("json", "user.name:${it.name}-user.age:${it.age}")
+    }
+ ```
 
 
-    ```
