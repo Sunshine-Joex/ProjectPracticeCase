@@ -21,4 +21,5 @@
     否则，布局会上移
 
 效果如下：
+
 ![此处为图片加载失败时显示的文字](https://raw.github.com/Sunshine-Joex/ProjectPracticeCase/master/raw/setStatusBarColor.png)
