@@ -11,10 +11,12 @@ import cn.example.sunshine.MyApplication
 import cn.example.sunshine.R
 import cn.example.sunshine.base.BaseActivity
 import cn.example.sunshine.bean.HolidayBean
+import cn.example.sunshine.bean.User
 import cn.example.sunshine.extension.*
 import cn.example.sunshine.ui.contract.TestContract
 import cn.example.sunshine.ui.presenter.TestPresenter
 import cn.example.sunshine.utils.SharedPreferences
+import cn.example.sunshine.utils.toJsonArray
 import cn.example.sunshine.widget.popupwindow.EasyPopup
 import cn.example.sunshine.widget.popupwindow.XGravity
 import cn.example.sunshine.widget.popupwindow.YGravity
@@ -46,8 +48,6 @@ class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnCl
         mLoginOut.setOnClickListener(this)
         testRoundImg.setOnClickListener(this)
         supportActionBar!!.title = isLogin.toString()
-
-
     }
 
     override fun initData() {

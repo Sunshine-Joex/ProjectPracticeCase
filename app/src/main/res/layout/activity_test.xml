@@ -4,12 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorAccent"
     tools:context="cn.example.sunshine.ui.TestActivity">
 
     <cn.example.sunshine.widget.SimpleMultiStateView
         android:id="@+id/simpleMultiStateView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_gravity="center">
 
         <Button
@@ -25,6 +27,8 @@
         android:id="@+id/mLoginOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
         android:text="退出登录" />
 
@@ -32,17 +36,19 @@
         android:id="@+id/testImg"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center" />
     <ImageView
         android:id="@+id/testBorderImg"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center" />
     <ImageView
         android:id="@+id/testRoundImg"
         android:layout_width="108dp"
         android:layout_height="78dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:scaleType="fitXY"
         android:layout_gravity="center_horizontal" />
 

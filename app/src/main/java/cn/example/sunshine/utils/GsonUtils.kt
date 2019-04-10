@@ -24,6 +24,7 @@ fun <T> toJsonObject(jsonString: String, t: Class<T>): T {
  *  报错原因：泛型在编译期类型被擦除导致报错
  *  报错信息：com.google.gson.internal.LinkedTreeMap cannot be cast to Class
  */
+@Deprecated("error method")
 fun <T> toJsonArray(jsonString: String, cls: Class<T>): List<T> {
     return Gson().fromJson(jsonString, object : TypeToken<List<T>>() {}.type)
 }
