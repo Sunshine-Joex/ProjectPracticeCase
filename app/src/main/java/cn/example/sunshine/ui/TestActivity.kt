@@ -4,7 +4,9 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Handler
 import android.support.annotation.RequiresApi
+import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import cn.example.sunshine.MainActivity
 import cn.example.sunshine.MyApplication
@@ -53,8 +55,6 @@ class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnCl
     override fun initData() {
         //发起请求
         mPresenter!!.getData()
-        testImg.loadBorderCircleImage(url)
-        testBorderImg.loadBorderCircleImage(url, dp2px(1.0f).toFloat(), Color.CYAN)
         testRoundImg.loadBorderRoundImage(url, dp2px(2.0f))
     }
 
@@ -100,10 +100,12 @@ class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnCl
                 .setContentView(tv)
                 .setOnViewListener { view, popup -> }
                 .setFocusAndOutsideEnable(true)
-                .setHeight(dp2px(35f))
-                .setWidth(dp2px(57f))
+                .setHeight(dp2px(500f))
+                .setWidth(ViewGroup.LayoutParams.MATCH_PARENT)
                 .apply()
-        mPop!!.showAtAnchorView(testRoundImg, YGravity.ABOVE, XGravity.CENTER, 0, -dp2px(10f))
+        mPop?.showAsDropDown(testRoundImg,Gravity.CENTER_HORIZONTAL,0,0)
+//        mPop!!.showAtLocation(testRoundImg,Gravity.CENTER_HORIZONTAL,0,0)
+//        mPop!!.showAtAnchorView(testRoundImg, YGravity.ABOVE, XGravity.CENTER, 0, -dp2px(10f))
 
     }
 
