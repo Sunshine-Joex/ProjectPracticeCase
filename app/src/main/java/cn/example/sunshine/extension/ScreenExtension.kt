@@ -2,6 +2,7 @@ package cn.example.sunshine.extension
 
 import android.app.Fragment
 import android.content.Context
+import android.view.View
 
 /**
  * @author SunShine-Joex
@@ -44,6 +45,26 @@ fun Fragment.sp2px(spValue: Float): Int {
 }
 
 fun Fragment.px2sp(pxValue: Float): Int {
+    val scale = resources.displayMetrics.scaledDensity
+    return (pxValue / scale + 0.5f).toInt()
+}
+
+fun View.dp2px(dpValue: Float): Int {
+    val scale = resources.displayMetrics.density
+    return (dpValue * scale + 0.5f).toInt()
+}
+
+fun View.px2dp(pxValue: Float): Int {
+    val scale = resources.displayMetrics.density
+    return (pxValue / scale + 0.5f).toInt()
+}
+
+fun View.sp2px(spValue: Float): Int {
+    val scale = resources.displayMetrics.scaledDensity
+    return (spValue * scale + 0.5f).toInt()
+}
+
+fun View.px2sp(pxValue: Float): Int {
     val scale = resources.displayMetrics.scaledDensity
     return (pxValue / scale + 0.5f).toInt()
 }

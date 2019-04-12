@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
+
     android:orientation="vertical"
     tools:context="cn.example.sunshine.MainActivity">
 
@@ -29,8 +30,29 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="图片浸入状态栏" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher_round"/>
 
-
+        <cn.example.sunshine.widget.CircleSeekBar
+            android:id="@+id/seekbar"
+            app:wheel_pointer_radius="5dp"
+            app:wheel_pointer_color="#EF623F"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:wheel_max_process="100"
+            app:wheel_reached_color="#EF623F"
+            app:wheel_reached_width="4dp"
+            android:padding="10dp"
+            app:wheel_unreached_color="@android:color/darker_gray"
+            app:wheel_unreached_width="4dp" />
+        </FrameLayout>
     </LinearLayout>
 
 
