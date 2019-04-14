@@ -51,18 +51,28 @@
             app:arc_thumb_color="#EA5B51"
             app:arc_thumb_mode="FILL"
             app:arc_thumb_radius="5dp"
-            app:arc_un_color="#aaaaaa"
             app:arc_thumb_shadow_color="#BDEA5B51"
             app:arc_thumb_shadow_radius="3dp"
+            app:arc_un_color="#aaaaaa"
             app:arc_width="4dp" />
+        <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
+            android:id="@+id/circularFillableLoaders"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            app:cfl_border="false"
+            app:cfl_border_width="0dp"
+            android:layout_gravity="center"
+            app:cfl_progress="0"
+            app:cfl_wave_amplitude="0.06"
+            app:cfl_wave_color="#FE7D6D" />
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:background="@android:color/holo_red_dark"
-
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/money"
@@ -71,7 +81,6 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:text="50000"
-
             android:textColor="#ffffffff"
             android:textSize="30sp" />
     </FrameLayout>

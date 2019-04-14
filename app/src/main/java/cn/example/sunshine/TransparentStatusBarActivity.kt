@@ -3,6 +3,7 @@ package cn.example.sunshine
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import cn.example.sunshine.base.BaseActivity
@@ -41,7 +42,12 @@ class ImageTopActivity : BaseActivity<BaseContract.BasePresenter>(), ArcSeekBar.
 
     override fun onProgressChanged(seekBar: ArcSeekBar?, progress: Int, isUser: Boolean) {
 
+
         money.text = (50000 - progress * 1000).toString()
+//progress 49 0  48 1 47 2
+        Log.e("progress:","$progress -> ${Math.abs(progress-49)}")
+
+        circularFillableLoaders.setProgress((progress+1)*2)
 
     }
 
