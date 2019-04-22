@@ -24,15 +24,10 @@ fun <T> Observable<T>.applySchedulers(): Observable<T> {
 }
 
 
-fun Fragment.toast(msg: String, time: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(activity, msg, time).show()
-}
+fun Fragment.toast(msg: String, time: Int = Toast.LENGTH_SHORT) = Toast.makeText(activity, msg, time).show()
 
 
-fun Context.toast(msg: String, time: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(this, msg, time).show()
-
-}
+fun Context.toast(msg: String, time: Int = Toast.LENGTH_SHORT) = Toast.makeText(this, msg, time).show()
 
 /**
  * inline 函数跳转，传参数，不支持Parcelable
@@ -43,7 +38,7 @@ inline fun <reified T : Activity> Context.startActivity(vararg params: Pair<Stri
         val key = it.first
         val value = it.second
         when (value) {
-             null -> intent.putExtra(key, null as Serializable?)
+            null -> intent.putExtra(key, null as Serializable?)
             is Int -> intent.putExtra(key, value)
             is Long -> intent.putExtra(key, value)
             is CharSequence -> intent.putExtra(key, value)

@@ -27,10 +27,15 @@ class MainActivity : BaseActivity<BaseContract.BasePresenter>(), View.OnClickLis
 
     override fun onResume() {
         super.onResume()
-
         testNetView.setOnClickListener(this)
         imageTopStatusBar.setOnClickListener(this)
         isLogin = true
+
+        percentview.coinName="BTC"
+        percentview.precentMax=80
+        percentview.sweepAngleMax=288f
+        percentview.setProgressNum(2000)
+
 
     }
 

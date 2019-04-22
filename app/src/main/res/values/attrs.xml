@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="msv_SimpleMultiStateView">
-        <attr name="msv_emptyView" format="reference"/>
-        <attr name="msv_loadingView" format="reference"/>
-        <attr name="msv_failView" format="reference"/>
-        <attr name="msv_contentView" format="reference"/>
-        <attr name="msv_nonetView" format="reference"/>
+        <attr name="msv_emptyView" format="reference" />
+        <attr name="msv_loadingView" format="reference" />
+        <attr name="msv_failView" format="reference" />
+        <attr name="msv_contentView" format="reference" />
+        <attr name="msv_nonetView" format="reference" />
         <attr name="msv_viewState" format="enum">
-            <enum name="content" value="10001"/>
-            <enum name="loading" value="10002"/>
-            <enum name="empty" value="10003"/>
-            <enum name="fail" value="10004"/>
-            <enum name="nonet" value="10005"/>
+            <enum name="content" value="10001" />
+            <enum name="loading" value="10002" />
+            <enum name="empty" value="10003" />
+            <enum name="fail" value="10004" />
+            <enum name="nonet" value="10005" />
         </attr>
     </declare-styleable>
 
@@ -27,7 +27,7 @@
         <attr name="wheel_cur_process" format="integer" />
         <attr name="wheel_reached_color" format="color" />
         <attr name="wheel_reached_width" format="dimension" />
-        <attr name="wheel_reached_has_corner_round" format="boolean"/>
+        <attr name="wheel_reached_has_corner_round" format="boolean" />
         <attr name="wheel_unreached_color" format="color" />
         <attr name="wheel_unreached_width" format="dimension" />
         <attr name="wheel_pointer_color" format="color" />
@@ -39,5 +39,22 @@
         <attr name="wheel_has_cache" format="boolean" />
         <attr name="wheel_can_touch" format="boolean" />
         <attr name="wheel_scroll_only_one_circle" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="PercentageView">
+        <attr name="per_coin_text" format="String" />
+        <attr name="per_coin_color" format="color" />
+        <attr name="per_coin_size" format="dimension" />
+
+        <attr name="per_percentage_text" format="String" />
+        <attr name="per_percentage_color" format="color" />
+        <attr name="per_percentage_size" format="dimension" />
+
+        <attr name="per_unreached_width" format="dimension" />
+        <attr name="per_unreached_color" format="color" />
+
+        <attr name="per_reached_width" format="dimension" />
+        <attr name="per_reached_color" format="color" />
     </declare-styleable>
 </resources>

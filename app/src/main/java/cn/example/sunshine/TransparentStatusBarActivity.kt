@@ -61,7 +61,7 @@ class ImageTopActivity : BaseActivity<BaseContract.BasePresenter>(), ArcSeekBar.
 
 
     override fun getLayout(): Int = R.layout.activity_image_top
-    var list = listOfNotNull(url, url, url)
+    var list = listOfNotNull(url, url)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
