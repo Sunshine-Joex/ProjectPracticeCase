@@ -45,5 +45,11 @@ interface BaseContract {
          * 加载失败重试
          */
         fun onRetry()
+
+        /**
+         * 空状态
+         */
+
+        fun showEmpty()
     }
 }

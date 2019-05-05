@@ -93,14 +93,14 @@ public class SimpleMultiStateView extends MultiStateView {
      * 显示错误页
      */
     public void showErrorView() {
-        if (getViewState() != MultiStateView.STATE_CONTENT) {
+//        if (getViewState() != MultiStateView.STATE_CONTENT) {
             this.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     setViewState(MultiStateView.STATE_FAIL);
                 }
             }, 100);
-        }
+//        }
 
     }
 
@@ -108,14 +108,14 @@ public class SimpleMultiStateView extends MultiStateView {
      * 无数据时
      */
     public void showEmptyView() {
-        if (getViewState() != MultiStateView.STATE_CONTENT) {
+//        if (getViewState() != MultiStateView.STATE_CONTENT) {
             this.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     setViewState(MultiStateView.STATE_EMPTY);
                 }
             }, 100);
-        }
+//        }
 
     }
 
@@ -123,7 +123,7 @@ public class SimpleMultiStateView extends MultiStateView {
      * 无数据时
      */
     public void showNoNetView() {
-        if (getViewState() != MultiStateView.STATE_CONTENT) {
+//        if (getViewState() != MultiStateView.STATE_CONTENT) {
             this.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -131,7 +131,7 @@ public class SimpleMultiStateView extends MultiStateView {
                 }
             }, 100);
 
-        }
+//        }
 
     }
 
@@ -211,7 +211,7 @@ public class SimpleMultiStateView extends MultiStateView {
     }
 
     public SimpleMultiStateView build() {
-        showLoadingView();
+//        showLoadingView();
         return this;
     }
 

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/colorAccent"
     tools:context="cn.example.sunshine.ui.TestActivity">
@@ -11,7 +12,7 @@
         android:id="@+id/simpleMultiStateView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        app:msv_emptyView="@layout/view_empty_img"
         android:layout_gravity="center">
 
         <Button

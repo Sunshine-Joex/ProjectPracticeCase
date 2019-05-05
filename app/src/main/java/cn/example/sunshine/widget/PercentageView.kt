@@ -42,10 +42,10 @@ class PercentageView(context: Context, attrs: AttributeSet, defStyleAttr: Int) :
     }
 
     private fun initAttrs(context: Context, attrs: AttributeSet, defStyleAttr: Int) {
-        var array = context.obtainStyledAttributes(attrs, R.styleable.PercentageView, defStyleAttr, 0)
+       /* var array = context.obtainStyledAttributes(attrs, R.styleable.PercentageView, defStyleAttr, 0)
         coinName = array.getString(R.styleable.PercentageView_per_coin_text)
         coinNameSize = array.getDimension(R.styleable.PercentageView_per_coin_size, sp2px(10).toFloat())
-        array.recycle()
+        array.recycle()*/
 
 
     }

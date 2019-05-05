@@ -103,8 +103,8 @@ class TestActivity : BaseActivity<TestPresenter>(), TestContract.View, View.OnCl
                 .setHeight(dp2px(500f))
                 .setWidth(ViewGroup.LayoutParams.MATCH_PARENT)
                 .apply()
-        mPop?.showAsDropDown(testRoundImg,Gravity.CENTER_HORIZONTAL,0,0)
-//        mPop!!.showAtLocation(testRoundImg,Gravity.CENTER_HORIZONTAL,0,0)
+//        mPop?.showAsDropDown(testRoundImg,Gravity.CENTER_HORIZONTAL,0,0)
+        mPop!!.showAtLocation(testRoundImg,Gravity.CENTER_HORIZONTAL,0,0)
 //        mPop!!.showAtAnchorView(testRoundImg, YGravity.ABOVE, XGravity.CENTER, 0, -dp2px(10f))
 
     }

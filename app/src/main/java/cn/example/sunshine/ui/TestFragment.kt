@@ -9,9 +9,11 @@ import cn.example.sunshine.ui.contract.TestContract
 import cn.example.sunshine.ui.presenter.TestPresenter
 
 class TestFragment : BaseFragment<TestPresenter>(), TestContract.View {
+    override fun showEmpty() {
+    }
 
 
-     override fun loadData(holiday: HolidayBean) {
+    override fun loadData(holiday: HolidayBean) {
 
      }
 

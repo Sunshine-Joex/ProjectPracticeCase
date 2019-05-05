@@ -42,7 +42,7 @@
     </declare-styleable>
 
 
-    <declare-styleable name="PercentageView">
+    <!--<declare-styleable name="PercentageView">
         <attr name="per_coin_text" format="String" />
         <attr name="per_coin_color" format="color" />
         <attr name="per_coin_size" format="dimension" />
@@ -56,5 +56,5 @@
 
         <attr name="per_reached_width" format="dimension" />
         <attr name="per_reached_color" format="color" />
-    </declare-styleable>
+    </declare-styleable>-->
 </resources>

@@ -15,13 +15,14 @@ import cn.example.sunshine.extension.applySchedulers
 class TestPresenter : AbstractPresenter<TestContract.View>(), TestContract.Presenter {
 
     override fun getData() {
-        mView!!.showLoading()
+//        mView!!.showLoading()
         mApiService!!.getHoliday("20190308")
                 .applySchedulers()
                 .subscribe(object : BaseObserver<HolidayBean, BaseContract.BaseView>(mView!!) {
                     override fun onSuccess(t: HolidayBean?) {
                         super.onSuccess(t)
                         mView!!.loadData(t!!)
+                        mView!!.showEmpty()
                     }
 //                    override fun onSuccess(t: HolidayBean?) {
 //                        mView!!.loadData(t!!)

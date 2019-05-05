@@ -39,7 +39,8 @@ abstract class BaseActivity<P : BaseContract.BasePresenter> : AppCompatActivity(
         if (simpleMultiStateView == null) {
             return
         }
-        simpleMultiStateView!!.setEmptyResource(R.layout.view_empty)
+        simpleMultiStateView!!
+//                .setEmptyResource(R.layout.view_empty)
                 .setRetryResource(R.layout.view_retry)
                 .setLoadingResource(R.layout.view_loading)
                 .setNoNetResource(R.layout.view_nonet)
@@ -86,6 +87,11 @@ abstract class BaseActivity<P : BaseContract.BasePresenter> : AppCompatActivity(
     override fun showSuccess() {
         if (simpleMultiStateView != null) {
             simpleMultiStateView!!.showContent()
+        }
+    }
+    override fun showEmpty() {
+        if (simpleMultiStateView != null) {
+            simpleMultiStateView!!.showEmptyView()
         }
     }
 

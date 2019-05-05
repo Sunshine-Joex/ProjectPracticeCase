@@ -57,10 +57,10 @@
         </FrameLayout>
     </LinearLayout>
 
-    <cn.example.sunshine.widget.PercentageView
+    <!--<cn.example.sunshine.widget.PercentageView
         android:id="@+id/percentview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal" />-->
 
 </LinearLayout>
