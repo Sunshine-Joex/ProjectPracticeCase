@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_image_top.*
 import android.view.View
 import android.widget.ImageView
 import cn.example.sunshine.extension.loadBorderRoundImage
+import cn.example.sunshine.utils.blackStatusBarTop
 import cn.example.sunshine.utils.setNavigationBarColor
 import cn.example.sunshine.utils.transparentStatusBar
 import cn.example.sunshine.widget.ArcSeekBar
@@ -65,8 +66,9 @@ class ImageTopActivity : BaseActivity<BaseContract.BasePresenter>(), ArcSeekBar.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        supportActionBar!!.hide()
-//        transparentStatusBar(this)
+        supportActionBar!!.hide()
+        transparentStatusBar(this)
+        blackStatusBarTop(this)
         setNavigationBarColor(this, Color.GRAY)
     }
 
